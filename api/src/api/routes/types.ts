@@ -1,6 +1,6 @@
 import {Request, Response, Router} from 'express'
 import * as typeController from '../controllers/types'
-import Type from "../models/Type";
+import Type from "../../db/models/Type";
 
 const typesRouter = Router()
 

@@ -1,5 +1,5 @@
-import * as typeDal from '../../dal/type'
-import Type from '../../models/Type'
+import * as typeDal from '../dal/type'
+import Type from '../models/Type'
 
 export const create = (payload: Type): Promise<Type> => {
   return typeDal.create(payload)

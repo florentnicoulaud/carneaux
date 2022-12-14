@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import {errorHandler} from "./middleware/error-handler";
 import express from "express";
-import routes from "./routes";
+import routes from "./api/routes";
 import dbInit from "./db/init";
 
 // App Variables

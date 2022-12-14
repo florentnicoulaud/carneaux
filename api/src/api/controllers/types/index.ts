@@ -1,5 +1,5 @@
-import * as service from '../../db/services/type-service'
-import Type from "../../models/Type";
+import * as service from '../../../db/services/type'
+import Type from "../../../db/models/Type";
 
 export const create = async (payload: Type): Promise<Type> => {
   return await service.create(payload)
