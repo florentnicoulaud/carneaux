@@ -1,4 +1,4 @@
-import * as service from '../../db/services/typeService'
+import * as service from '../../db/services/type-service'
 import Type from "../../models/Type";
 import {CreateTypeDTO, UpdateTypeDTO} from "../../dto/types.dto";
 
