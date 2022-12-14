@@ -1,33 +1,28 @@
 import * as dotenv from "dotenv";
-import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import {errorHandler} from "./middleware/error-handler";
+import express from "express";
+import routes from "./routes";
+import dbInit from "./db/init";
 
-dotenv.config();
+// App Variables
+dotenv.config()
+const PORT = process.env.PORT || 7777
 
-/**
- * App Variables
- */
+// db ini
+dbInit()
 
-if (!process.env.PORT) {
-  process.exit(1);
-}
+// App Configuration
+const app = express()
+app.use(helmet())
+app.use(cors())
+app.use(express.json())
 
-const PORT: number = parseInt(process.env.PORT as string, 10);
+app.use('/api/v1', routes)
+app.use(errorHandler)
 
-const app = express();
-
-/**
- *  App Configuration
- */
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-
-/**
- * Server Activation
- */
+// Server Activation
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+  console.log(`Listening on port ${PORT}`)
+})
