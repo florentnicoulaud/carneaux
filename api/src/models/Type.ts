@@ -1,19 +1,7 @@
-import {DataTypes, Model, Optional} from "sequelize";
+import {DataTypes, Model} from "sequelize";
 import sequelizeConnection from "../db/config";
 
-interface TypeAttributes {
-  id: number;
-  nom: string;
-  deletedAt?: Date;
-}
-
-export interface TypeInput extends Optional<TypeAttributes, 'id'> {
-}
-
-export interface TypeOuput extends Required<TypeAttributes> {
-}
-
-class Type extends Model<TypeAttributes, TypeInput> implements TypeAttributes {
+class Type extends Model {
   public id!: number;
   public nom!: string;
   public readonly deletedAt?: Date;

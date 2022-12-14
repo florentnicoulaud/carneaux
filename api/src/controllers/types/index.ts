@@ -1,11 +1,10 @@
 import * as service from '../../db/services/type-service'
 import Type from "../../models/Type";
-import {CreateTypeDTO, UpdateTypeDTO} from "../../dto/types.dto";
 
-export const create = async (payload: CreateTypeDTO): Promise<Type> => {
+export const create = async (payload: Type): Promise<Type> => {
   return await service.create(payload)
 }
-export const update = async (id: number, payload: UpdateTypeDTO): Promise<Type> => {
+export const update = async (id: number, payload: Type): Promise<Type> => {
   return await service.update(id, payload)
 }
 export const getById = async (id: number): Promise<Type> => {

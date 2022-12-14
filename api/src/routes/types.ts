@@ -1,6 +1,6 @@
 import {Request, Response, Router} from 'express'
 import * as typeController from '../controllers/types'
-import {CreateTypeDTO, UpdateTypeDTO} from "../dto/types.dto";
+import Type from "../models/Type";
 
 const typesRouter = Router()
 
@@ -11,7 +11,7 @@ typesRouter.get(':/id', async (req: Request, res: Response) => {
 })
 typesRouter.put('/:id', async (req: Request, res: Response) => {
   const id = Number(req.params.id)
-  const payload: UpdateTypeDTO = req.body
+  const payload: Type = req.body
 
   const result = await typeController.update(id, payload)
   return res.status(201).send(result)
@@ -25,7 +25,7 @@ typesRouter.delete('/:id', async (req: Request, res: Response) => {
   })
 })
 typesRouter.post('/', async (req: Request, res: Response) => {
-  const payload: CreateTypeDTO = req.body
+  const payload: Type = req.body
   const result = await typeController.create(payload)
   return res.status(200).send(result)
 })

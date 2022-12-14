@@ -1,10 +1,10 @@
-import Type, {TypeInput} from '../models/Type'
+import Type from '../models/Type'
 
-export const create = async (payload: TypeInput): Promise<Type> => {
+export const create = async (payload: Partial<Type>): Promise<Type> => {
   return await Type.create(payload)
 }
 
-export const update = async (id: number, payload: Partial<TypeInput>): Promise<Type> => {
+export const update = async (id: number, payload: Partial<Type>): Promise<Type> => {
   const type = await Type.findByPk(id)
   if (!type) {
     // @todo throw custom error
