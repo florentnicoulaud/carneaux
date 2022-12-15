@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express'
 import * as typeDal from '../../db/dal/type'
 import Type from '../../db/models/Type'
+import { typeValidator } from '../validation/type'
 
 const typesRouter = Router()
 
@@ -25,6 +26,10 @@ typesRouter.delete('/:id', async (req: Request, res: Response) => {
 })
 typesRouter.post('/', async (req: Request, res: Response) => {
   const payload: Type = req.body
+  const validationResult = typeValidator.validate(payload)
+  if (validationResult.error != null) {
+    throw validationResult.error
+  }
   const result = await typeDal.create(payload)
   return res.status(200).send(result)
 })
