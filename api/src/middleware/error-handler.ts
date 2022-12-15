@@ -1,13 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
-import HttpException from '../models/HttpException'
+import { ValidationError } from 'joi'
 
-export const errorHandler = (
-  error: HttpException,
+export const validationErrorHandler = (
+  error: ValidationError,
   request: Request,
   response: Response,
   next: NextFunction
-) => {
-  const status = error.statusCode || error.status || 500
-
-  response.status(status).send(error)
+): void => {
+  response.status(400).send(error)
 }
