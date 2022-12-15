@@ -1,6 +1,6 @@
-import Type from "./models/Type";
+import Type from './models/Type'
 
-const dbInit = () => Promise.all([
-  Type.sync({alter: true})
+const dbInit = async () => await Promise.all([
+  Type.sync({ alter: true })
 ])
 export default dbInit

@@ -6,16 +6,16 @@ export const create = async (payload: Partial<Type>): Promise<Type> => {
 
 export const update = async (id: number, payload: Partial<Type>): Promise<Type> => {
   const type = await Type.findByPk(id)
-  if (!type) {
+  if (type == null) {
     // @todo throw custom error
     throw new Error('not found')
   }
-  return await (type as Type).update(payload)
+  return await type.update(payload)
 }
 
 export const getById = async (id: number): Promise<Type> => {
   const type = await Type.findByPk(id)
-  if (!type) {
+  if (type == null) {
     // @todo throw custom error
     throw new Error('not found')
   }
@@ -24,11 +24,11 @@ export const getById = async (id: number): Promise<Type> => {
 
 export const deleteById = async (id: number): Promise<boolean> => {
   const deletedTypeCount = await Type.destroy({
-    where: {id}
+    where: { id }
   })
   return !!deletedTypeCount
 }
 
 export const getAll = async (): Promise<Type[]> => {
-  return Type.findAll()
+  return await Type.findAll()
 }

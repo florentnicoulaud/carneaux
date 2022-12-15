@@ -1,13 +1,13 @@
-import {NextFunction, Request, Response} from "express";
-import HttpException from "../models/HttpException";
+import { NextFunction, Request, Response } from 'express'
+import HttpException from '../models/HttpException'
 
 export const errorHandler = (
-    error: HttpException,
-    request: Request,
-    response: Response,
-    next: NextFunction
+  error: HttpException,
+  request: Request,
+  response: Response,
+  next: NextFunction
 ) => {
-  const status = error.statusCode || error.status || 500;
+  const status = error.statusCode || error.status || 500
 
-  response.status(status).send(error);
-};
+  response.status(status).send(error)
+}
