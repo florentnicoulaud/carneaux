@@ -1,4 +1,12 @@
 = carneaux
+:toc:
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
 
 Vue3, express.js, Sequelize, SQLite fullstack POC.
 
@@ -68,6 +76,7 @@ docker run -p 7777:7777 --name api carneaux-api
 
 == Architecture
 === Web
+The web tiers is developed with Vue3.
 
 === API
 The API is developed with Express.js for the REST exposition.
