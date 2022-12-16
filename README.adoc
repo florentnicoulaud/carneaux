@@ -1,0 +1,83 @@
+= carneaux
+
+Vue3, express.js, Sequelize, SQLite fullstack POC.
+
+== Run Production
+After cloning the git repository, use docker-compose to start the project in production mode.
+Docker compose will start both the web tiers (frontend) and the api tiers (backend).
+[source, shell]
+git clone git@github.com:florentnicoulaud/carneaux.git
+cd carneaux
+docker-compose up
+
+The frontend is then available at :
+[source]
+http://localhost
+
+== Build and Run Dev
+The project is divided into 2 main parts :
+
+- web: the user interface, developed in Vue3 and uses the API
+- api: exposes a REST API and accesses the SQLite database
+
+=== Web
+The web tiers is developed with Vue3 and uses Axios to access the API.
+It is located in the *web/* subfolder.
+[source, shell]
+cd web/
+
+==== With NPM
+If you have node installed, you can start the application in development mode like this :
+[source, shell]
+npm install
+npm run dev
+
+The web interface is accessible on port 8080, with a web browser :
+[source]
+http://localhost:8080
+
+==== With Docker
+You can also start the application in development mode using docker. You can build and start the container like this:
+[source, shell]
+docker build . -t carneaux-web -f Dockerfile.dev
+docker run -p 80:8080 --name web carneaux-web
+
+=== API
+The API tiers is developed with Express.js, Joi, Sequelize and stores its data in a SQLite database.
+It is located in the *api/* subfolder.
+[source, shell]
+cd api/
+
+==== With NPM
+If you have node installed, you can start the application in development mode like this :
+[source, shell]
+npm install
+npm run dev
+
+The API is available on port 7777 and can be queried with Postman or curl like this :
+[source]
+curl -i http://localhost:7777/api/v1/types/
+
+This should print the HTTP response header and the JSON payload.
+
+==== With Docker
+If you wish to start the application in development mode using docker, you can build and start the container like this:
+[source, shell]
+docker build . -t carneaux-api -f Dockerfile.dev
+docker run -p 7777:7777 --name api carneaux-api
+
+== Architecture
+=== Web
+
+=== API
+The API is developed with Express.js for the REST exposition.
+
+It uses joi to validate input received from the HTTP requests.
+
+Sequelize is used as the ORM to manage the mapping with the database. Sequelize also updates or creates tables if necessary in the database (with the *alter: true* option).
+
+NOTE: This feature is used to simplify interactions with the database during development iterations and should not be used in production.
+
+SQLite is used for simplicity in this POC as the main database. It is a simple one-file database with no other requirements.
+
+NOTE: Again, in production, a more suitable database would be used to suit your needs.
