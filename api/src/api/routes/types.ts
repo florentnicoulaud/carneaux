@@ -5,7 +5,7 @@ import { typeValidator } from '../validation/type'
 
 const typesRouter = Router()
 
-typesRouter.get(':/id', async (req: Request, res: Response) => {
+typesRouter.get('/:id', async (req: Request, res: Response) => {
   const id = Number(req.params.id)
   const result = await typeDal.getById(id)
   return res.status(200).send(result)
