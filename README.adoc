@@ -16,7 +16,7 @@ Docker compose will start both the web tiers (frontend) and the api tiers (backe
 [source, shell]
 git clone git@github.com:florentnicoulaud/carneaux.git
 cd carneaux
-docker-compose up
+docker-compose up --build
 
 The frontend is then available at :
 [source]
@@ -81,7 +81,7 @@ The web tiers is developed with Vue3.
 === API
 The API is developed with Express.js for the REST exposition.
 
-It uses joi to validate input received from the HTTP requests.
+Joi is used to validate input received from HTTP requests.
 
 Sequelize is used as the ORM to manage the mapping with the database. Sequelize also updates or creates tables if necessary in the database (with the *alter: true* option).
 
@@ -89,4 +89,4 @@ NOTE: This feature is used to simplify interactions with the database during dev
 
 SQLite is used for simplicity in this POC as the main database. It is a simple one-file database with no other requirements.
 
-NOTE: Again, in production, a more suitable database would be used to suit your needs.
+NOTE: Again, in production, a more suitable database should be used to suit your needs.
