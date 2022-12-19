@@ -90,3 +90,8 @@ NOTE: This feature is used to simplify interactions with the database during dev
 SQLite is used for simplicity in this POC as the main database. It is a simple one-file database with no other requirements.
 
 NOTE: Again, in production, a more suitable database should be used to suit your needs.
+
+In Sequelize, paranoid mode is enabled to automatically add timestamps to business objects to track creation/update/delete times.
+Objects are therefore only deleted by writing a timestamp value in the 'deletedAt' column.
+
+NOTE: The getAll operation in the API only returns 'not deleted' objects. Deleted objects can only be seen by connecting to the database.
