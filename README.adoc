@@ -18,9 +18,27 @@ git clone git@github.com:florentnicoulaud/carneaux.git
 cd carneaux
 docker-compose up --build
 
-The frontend is then available at :
+The frontend is then available at:
 [source]
 http://localhost
+
+The API is available at this URL:
+[source]
+http://localhost:7777/api/v1/
+
+These operations : GET, POST, PUT, DELETE are available for the Type entity.
+[source]
+GET http://localhost:7777/api/v1/types
+GET http://localhost:7777/api/v1/types/{id}
+POST http://localhost:7777/api/v1/types
+PUT http://localhost:7777/api/v1/types/{id}
+DELETE http://localhost:7777/api/v1/types/{id}
+
+The Type entity to add to payload should be like this :
+[source, json]
+{
+    "nom": "type C"
+}
 
 == Build and Run Dev
 The project is divided into 2 main parts :
